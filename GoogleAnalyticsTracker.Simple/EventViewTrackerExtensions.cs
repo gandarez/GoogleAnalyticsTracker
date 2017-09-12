@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using GoogleAnalyticsTracker.Core;
 using GoogleAnalyticsTracker.Core.TrackerParameters;
 
@@ -16,8 +15,7 @@ namespace GoogleAnalyticsTracker.Simple
                 Action = action,
                 Label = label,
                 Value = value,
-                DocumentHostName = tracker.Hostname,
-                CacheBuster = tracker.AnalyticsSession.GenerateCacheBuster()
+                DocumentHostName = tracker.Hostname
             };
 
             eventTrackingParameters.SetCustomDimensions(customDimensions);

@@ -75,17 +75,27 @@ namespace GoogleAnalyticsTracker.Core
         {
             parameters.TrackingId = TrackingAccount;
 
-            if (string.IsNullOrWhiteSpace(parameters.ClientId))
+            if (string.IsNullOrEmpty(parameters.ClientId))
             {
                 parameters.ClientId = AnalyticsSession.GenerateSessionId();
             }
 
-            if (string.IsNullOrWhiteSpace(parameters.UserLanguage))
+            AmendParameters(parameters);
+        }
+
+        protected virtual void AmendParameters(IGeneralParameters parameters)
+        {
+            if (string.IsNullOrEmpty(parameters.UserLanguage))
             {
-                // Note: another way could be CultureInfo.CurrentCulture
+                //Todo: another way could be CultureInfo.CurrentCulture ?
                 parameters.UserLanguage = "en-US";
             }
-        }        
+
+            if (UseHttpGet && string.IsNullOrEmpty(parameters.CacheBuster))
+            {
+                parameters.CacheBuster = AnalyticsSession.GenerateCacheBuster();
+            }
+        }
 
         public async Task<TrackingResult> TrackAsync(IGeneralParameters generalParameters)
         {

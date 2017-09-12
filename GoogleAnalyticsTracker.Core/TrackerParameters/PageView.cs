@@ -15,6 +15,5 @@ namespace GoogleAnalyticsTracker.Core.TrackerParameters
         }
 
         #endregion
-
     }
 }

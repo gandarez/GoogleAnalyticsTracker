@@ -13,8 +13,7 @@ namespace GoogleAnalyticsTracker.Simple
             {
                 DocumentTitle = pageTitle,
                 DocumentLocationUrl = pageUrl,
-                DocumentHostName = tracker.Hostname,
-                CacheBuster = tracker.AnalyticsSession.GenerateCacheBuster()
+                DocumentHostName = tracker.Hostname
             };
 
             pageViewParameters.SetCustomDimensions(customDimensions);

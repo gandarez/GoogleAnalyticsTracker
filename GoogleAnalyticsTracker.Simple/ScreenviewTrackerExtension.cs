@@ -17,8 +17,7 @@ namespace GoogleAnalyticsTracker.Simple
                 ApplicationVersion = appVersion,
                 ApplicationInstallerId = appInstallerId,
                 DocumentHostName = tracker.Hostname,
-                ScreenName = screenName,
-                CacheBuster = tracker.AnalyticsSession.GenerateCacheBuster()
+                ScreenName = screenName
             };
 
             screenviewParamenters.SetCustomDimensions(customDimensions);
